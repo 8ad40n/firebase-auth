@@ -12,9 +12,11 @@ export default function Register() {
     RegisterWithPassword(email, password)
       .then((result) => {
         console.log(result.user);
+        console.log("Register successful");
       })
       .catch((error) => {
         console.error(error);
+        console.log("Error!");
       });
   };
 
