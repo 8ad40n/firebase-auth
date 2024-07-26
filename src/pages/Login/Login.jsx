@@ -5,6 +5,7 @@ export default function Login() {
     <div>
       <div className="card bg-base-100 w-full max-w-sm shrink-0 shadow-2xl mx-auto">
         <form className="card-body">
+          <h1 className="text-5xl text-center font-bold">Login</h1>
           <div className="form-control">
             <label className="label">
               <span className="label-text">Email</span>
@@ -37,13 +38,13 @@ export default function Login() {
           <div className="form-control mt-6">
             <button className="btn btn-primary">Login</button>
           </div>
-          <div className="form-control mt-6">
-            <button className="btn btn-secondary">Google</button>
-          </div>
-          <div className="form-control mt-1">
-            <button className="btn btn-secondary">GitHub</button>
-          </div>
         </form>
+        <div className="mt-6">
+          <button className="btn btn-secondary w-full">Google</button>
+        </div>
+        <div className="mt-1">
+          <button className="btn btn-secondary w-full">GitHub</button>
+        </div>
       </div>
     </div>
   );

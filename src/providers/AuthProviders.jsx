@@ -1,4 +1,4 @@
-import { getAuth } from "firebase/auth";
+import { createUserWithEmailAndPassword, getAuth } from "firebase/auth";
 import React, { createContext } from "react";
 import app from "../firebase/firebase.config";
 
