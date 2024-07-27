@@ -2,7 +2,7 @@ import React, { useContext } from "react";
 import { AuthContext } from "../../providers/AuthProviders";
 
 export default function Login() {
-    const { LoginWithPassword, LoginWithGoogle } = useContext(AuthContext);
+    const { LoginWithPassword, LoginWithGoogle, LoginWithGitHub } = useContext(AuthContext);
 
 
   const handleLogin = (e) => {
@@ -32,6 +32,18 @@ export default function Login() {
       console.log("Error: ", error);
     })
   }
+
+  const handleGitHub = ()=>{
+    LoginWithGitHub()
+    .then(result=>{
+      console.log(result.user);
+      console.log("Login successful");
+    })
+    .catch(error=>{
+      console.log("Error: ", error);
+    })
+  }
+
 
   return (
     <div>
@@ -75,7 +87,7 @@ export default function Login() {
           <button onClick={handleGoogle} className="btn btn-secondary w-full">Google</button>
         </div>
         <div className="mt-1">
-          <button className="btn btn-secondary w-full">GitHub</button>
+          <button onClick={handleGitHub} className="btn btn-secondary w-full">GitHub</button>
         </div>
       </div>
     </div>
