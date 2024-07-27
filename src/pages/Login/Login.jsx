@@ -1,49 +1,61 @@
 import React, { useContext } from "react";
+import { useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../providers/AuthProviders";
 
 export default function Login() {
-    const { LoginWithPassword, LoginWithGoogle, LoginWithGitHub } = useContext(AuthContext);
+  const { LoginWithPassword, LoginWithGoogle, LoginWithGitHub } =
+    useContext(AuthContext);
+
+  const location= useLocation();
+  const nevigate= useNavigate();
 
 
   const handleLogin = (e) => {
     e.preventDefault();
-    const email= e.target.email.value;
-    const password= e.target.password.value;
+    const email = e.target.email.value;
+    const password = e.target.password.value;
     console.log(email, password);
 
-    LoginWithPassword(email,password)
-    .then(result=>{
+    LoginWithPassword(email, password)
+      .then((result) => {
         console.log(result.user);
         console.log("Login Successful");
-    })
-    .catch(error=>{
-        console.log("Error:", error);
-    })
 
+        // nevigate after login
+        nevigate(location?.state ? location.state : "/user");
+      })
+      .catch((error) => {
+        console.log("Error:", error);
+      });
   };
 
-  const handleGoogle= ()=>{
+  const handleGoogle = () => {
     LoginWithGoogle()
-    .then(result=>{
-      console.log(result.user);
-      console.log("Login successful");
-    })
-    .catch(error=>{
-      console.log("Error: ", error);
-    })
-  }
+      .then((result) => {
+        console.log(result.user);
+        console.log("Login successful");
 
-  const handleGitHub = ()=>{
+        // nevigate after login
+        nevigate(location?.state ? location.state : "/user");
+      })
+      .catch((error) => {
+        console.log("Error: ", error);
+      });
+  };
+
+  const handleGitHub = () => {
     LoginWithGitHub()
-    .then(result=>{
-      console.log(result.user);
-      console.log("Login successful");
-    })
-    .catch(error=>{
-      console.log("Error: ", error);
-    })
-  }
+      .then((result) => {
+        console.log(result.user);
+        console.log("Login successful");
 
+        // nevigate after login
+        nevigate(location?.state ? location.state : "/user");
+      })
+      .catch((error) => {
+        console.log("Error: ", error);
+      });
+  };
 
   return (
     <div>
@@ -84,10 +96,14 @@ export default function Login() {
           </div>
         </form>
         <div className="mt-6">
-          <button onClick={handleGoogle} className="btn btn-secondary w-full">Google</button>
+          <button onClick={handleGoogle} className="btn btn-secondary w-full">
+            Google
+          </button>
         </div>
         <div className="mt-1">
-          <button onClick={handleGitHub} className="btn btn-secondary w-full">GitHub</button>
+          <button onClick={handleGitHub} className="btn btn-secondary w-full">
+            GitHub
+          </button>
         </div>
       </div>
     </div>
