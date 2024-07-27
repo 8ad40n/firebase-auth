@@ -39,6 +39,14 @@ export default function AuthProviders({children}) {
     return signInWithPopup(auth, githubProvider);
   }
 
+
+  // Sign Out
+  const Logout= ()=>{
+    setLoading(true);
+    return signOut(auth);
+  }
+
+
   // Manage user
   useEffect( ()=>{
     const unsubscribe= onAuthStateChanged( auth, (currentUser)=>{
@@ -52,12 +60,6 @@ export default function AuthProviders({children}) {
   } ,[])
 
 
-  // Sign Out
-  const Logout= ()=>{
-    return signOut(auth);
-  }
-
-
   const authInfo={
     RegisterWithPassword,
     LoginWithPassword,
@@ -65,6 +67,7 @@ export default function AuthProviders({children}) {
     LoginWithGitHub,
     user,
     Logout,
+    loading,
   }
 
 

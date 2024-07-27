@@ -23,7 +23,7 @@ import PrivateRoute from "./PrivateRoute";
         },
         {
           path: "/user",
-          element: <User></User>,
+          element: <PrivateRoute><User></User></PrivateRoute>,
         },
         {
           path: "/private",
