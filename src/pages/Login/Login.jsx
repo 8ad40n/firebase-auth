@@ -2,7 +2,7 @@ import React, { useContext } from "react";
 import { AuthContext } from "../../providers/AuthProviders";
 
 export default function Login() {
-    const { LoginWithPassword } = useContext(AuthContext);
+    const { LoginWithPassword, LoginWithGoogle } = useContext(AuthContext);
 
 
   const handleLogin = (e) => {
@@ -21,6 +21,17 @@ export default function Login() {
     })
 
   };
+
+  const handleGoogle= ()=>{
+    LoginWithGoogle()
+    .then(result=>{
+      console.log(result.user);
+      console.log("Login successful");
+    })
+    .catch(error=>{
+      console.log("Error: ", error);
+    })
+  }
 
   return (
     <div>
@@ -61,7 +72,7 @@ export default function Login() {
           </div>
         </form>
         <div className="mt-6">
-          <button className="btn btn-secondary w-full">Google</button>
+          <button onClick={handleGoogle} className="btn btn-secondary w-full">Google</button>
         </div>
         <div className="mt-1">
           <button className="btn btn-secondary w-full">GitHub</button>
