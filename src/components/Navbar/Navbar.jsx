@@ -1,7 +1,18 @@
-import React from "react";
+import React, { useContext } from "react";
 import { NavLink } from "react-router-dom";
+import { AuthContext } from "../../providers/AuthProviders";
 
 export default function Navbar() {
+  const { user, Logout } = useContext(AuthContext);
+
+  const handleLogout= ()=>{
+    Logout()
+    .then(()=>{
+      console.log("Log out successful!");
+    })
+    .catch()
+  };
+
   return (
     <div>
       <div className="navbar bg-base-100">
@@ -54,7 +65,11 @@ export default function Navbar() {
           </ul>
         </div>
         <div className="navbar-end">
-          <a className="btn">Button</a>
+          {
+            user ?
+            <button onClick={handleLogout} className="btn">Log out</button>:
+            <button className="btn">Logged In</button>
+          }
         </div>
       </div>
     </div>
