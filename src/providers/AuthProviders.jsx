@@ -65,11 +65,10 @@ export default function AuthProviders({children}) {
     LoginWithPassword,
     LoginWithGoogle,
     LoginWithGitHub,
-    user,
     Logout,
     loading,
+    user,
   }
-
 
   return(
     <AuthContext.Provider value={authInfo}>
